@@ -1,8 +1,8 @@
 <?php
 
-namespace RichBrains\Bundles\AdminGeneratorBundle\Form\Type\Language;
+namespace Bundles\AdminGeneratorBundle\Form\Type\Language;
 
-use Admingenerated\RichBrainsAdminGeneratorBundle\Form\BaseLanguageType\NewType as BaseNewType;
+use Admingenerated\AdminGeneratorBundle\Form\BaseLanguageType\NewType as BaseNewType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Type;
