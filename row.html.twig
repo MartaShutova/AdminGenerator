@@ -1,0 +1,22 @@
+{% block list_row %}
+    <tr data-href="{{ path("RichBrains_Bundles_AdminGeneratorBundle_Language_show", { 'pk': Language.Id}) }}">
+        <td class="empty"></td>{% block list_row_content %}
+        <td>
+            {% block list_td_column_name %}{{ Language.name }}{% endblock list_td_column_name %}
+        </td>
+        {% endblock list_row_content %}
+        {% block object_actions %}
+            <td>
+                <ul class="td_actions">
+                    {% block object_action_edit %}
+                        {% spaceless %}
+                            <li class="edit_action" style="font-size: inherit"><a  class="edit " href="{{ path("RichBrains_Bundles_AdminGeneratorBundle_Language_edit", { pk: Language.Id }) }}"></a><span>{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}</span></li>
+                        {% endspaceless %}
+                    {% endblock object_action_edit %}
+                    {% block object_actions_customActions %}{% endblock object_actions_customActions %}
+                </ul>
+            </td>
+        {% endblock object_actions %}
+        <td class="empty"></td>
+    </tr>
+{% endblock list_row %}
