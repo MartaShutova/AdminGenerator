@@ -1,0 +1,108 @@
+{% block list_nbresults %}
+    <div class="info-block">
+        {% set count = Languages.nbResults %}
+        {% trans with {'%count%': count,} from "Admingenerator" %}list.display.all{% endtrans %}
+    </div>
+{% endblock list_nbresults %}
+<div class="fright">
+    <div class="paging">
+        {{ pagerfanta(Languages, 'admingenerator') }}
+    </div>
+
+</div>
+<div class="clear"><!-- --></div>
+
+{% block filters %}
+{% endblock filters %}{% block form_batch_actions %}
+{% endblock form_batch_actions %}
+
+<div class="table-wrap">
+    <table id="table-list-Language" class="info-table object-actions-Language table-with-row-links" cellpadding="0" cellspacing="0">{% block list_thead %}
+            <thead>
+            <tr class="table-head">
+                <th class="empty"></th>
+                <th class="{% if 1 %}with-filter{% if sortColumn == 'Name' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'Name' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                    {% block list_thead_column_name %}                    {% if sortColumn == 'Name' and sortOrder == 'ASC' %}
+                        <a href="?sort=Name&order_by=desc">
+                    {% else %}
+                        <a href="?sort=Name&order_by=asc">
+                    {% endif %}{{ 'Name'|trans({}, 'Admin') }}{% if sortColumn == 'Name' %}
+                        {% if sortColumn == 'Name' and sortOrder == 'ASC' %}
+                            <span></span>
+                        {% else %}
+                            <span class="arrow-up"></span>
+                        {% endif %}
+                    {% else %}
+                        <i class="fa fa-sort-alpha-asc placeholder hover"></i>
+                    {% endif %}
+                        </a>
+                    {% endblock list_thead_column_name %}</th>
+                <th>
+                    {% block list_thead_column_actions %}                {% endblock list_thead_column_actions %}</th>
+                <th class="empty"></th>
+            </tr>
+            </thead>
+        {% endblock list_thead %}
+        {% block list_tbody %}
+            <tbody>
+            {% if Languages|length > 0 %}
+
+                {% for Language in Languages %}
+                    {% include "RichBrainsAdminGeneratorBundle:LanguageList:row.html.twig" with {  } %}
+                {% endfor %}
+
+            {% else %}
+                <tr class="list_trow no_results_row">
+                    <td class="empty"></td>
+                    <td colspan="2">{% trans from "Admingenerator" %}list.no.results{% endtrans %}</td>
+                    <td class="empty"></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        {% endblock list_tbody %}
+
+    </table>    {% block object_actions_script %}
+        <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/object-actions.js") }}"></script>
+        <script type="text/javascript">
+            ;(function(window, $, undefined){
+                $(".object-actions-Language").agen$objectActions({
+                    actionsSelector: '.object_actions a'
+                });
+            })(this, jQuery);
+        </script>
+    {% endblock object_actions_script %}
+</div>
+
+{% block list_paginator_perpage %}
+    {% if Languages.haveToPaginate or Languages.maxPerPage is not sameas(20) %}
+        <div class="form-row page-selection">
+            <span>{% trans from "Admingenerator" %}pagerfanta.view.perpage{% endtrans %}</span>
+            <select class="chosen per-page">
+                {% for perPage in [20, 50] %}
+                    {% if perPage == app.request.get("perPage") %}
+                        {% set isSelected = 'selected="selected"' %}
+                    {% else %}
+                        {% set isSelected = '' %}
+                    {% endif %}
+                    <option value="{{ perPage }}" {{ isSelected }}>
+                        {{ perPage }}
+                    </option>
+                {% endfor %}
+            </select>
+            <span>per page</span>
+        </div>
+    {% endif %}
+{% endblock list_paginator_perpage %}
+
+
+<div class="fright">
+    <div class="paging">
+        {{ pagerfanta(Languages, 'admingenerator') }}
+    </div>
+
+</div>
+<div class="clear"><!-- --></div>
+
+<div class="form-group list-actions col-md-12">
+</div>{% block endform_batch_actions %}
+{% endblock endform_batch_actions %}
