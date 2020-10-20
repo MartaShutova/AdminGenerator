@@ -1,5 +1,5 @@
 {% block list_row %}
-    <tr data-href="{{ path("RichBrains_Bundles_AdminGeneratorBundle_Language_show", { 'pk': Language.Id}) }}">
+    <tr data-href="{{ path("Bundles_AdminGeneratorBundle_Language_show", { 'pk': Language.Id}) }}">
         <td class="empty"></td>{% block list_row_content %}
         <td>
             {% block list_td_column_name %}{{ Language.name }}{% endblock list_td_column_name %}
@@ -10,7 +10,7 @@
                 <ul class="td_actions">
                     {% block object_action_edit %}
                         {% spaceless %}
-                            <li class="edit_action" style="font-size: inherit"><a  class="edit " href="{{ path("RichBrains_Bundles_AdminGeneratorBundle_Language_edit", { pk: Language.Id }) }}"></a><span>{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}</span></li>
+                            <li class="edit_action" style="font-size: inherit"><a  class="edit " href="{{ path("Bundles_AdminGeneratorBundle_Language_edit", { pk: Language.Id }) }}"></a><span>{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}</span></li>
                         {% endspaceless %}
                     {% endblock object_action_edit %}
                     {% block object_actions_customActions %}{% endblock object_actions_customActions %}
