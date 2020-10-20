@@ -1,7 +1,7 @@
 generator: admingenerator.generator.propel
 params:
-  model: RichBrains\Bundles\CoreBundle\Model\Others\Language
-  namespace_prefix: RichBrains
+  model: Bundles\CoreBundle\Model\Others\Language
+  namespace_prefix: Prefix
   concurrency_lock: ~
   bundle_name: AdminGeneratorBundle
   pk_requirement: ~
