@@ -1,0 +1,48 @@
+generator: admingenerator.generator.propel
+params:
+  model: RichBrains\Bundles\CoreBundle\Model\Others\Language
+  namespace_prefix: RichBrains
+  concurrency_lock: ~
+  bundle_name: AdminGeneratorBundle
+  pk_requirement: ~
+  fields: ~
+  object_actions:
+    delete: ~
+  batch_actions:
+    delete: ~
+  subfolder: Bundles
+builders:
+  list:
+    params:
+      title: Language management
+      display:
+        - name
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+      max_per_page: 20
+  new:
+    params:
+      title: Add new Language
+      display:
+        - name
+      actions:
+        save: ~
+        list: ~
+  edit:
+    params:
+      title: Edit Language
+      display:
+        - name
+      actions:
+        save: ~
+        list: ~
+  show:
+    params:
+      title: View Language
+      display:
+        - name
+      actions:
+        list: ~
+        edit: []
