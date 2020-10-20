@@ -1,0 +1,4 @@
+agb_language:
+  resource: '@AdminGeneratorBundle/Controller/Language/'
+  type: admingenerator
+  prefix: /language
